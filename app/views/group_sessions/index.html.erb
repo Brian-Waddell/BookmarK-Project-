@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Group sessions</h1>
+
+<div id="group_sessions">
+  <% @group_sessions.each do |group_session| %>
+    <%= render group_session %>
+    <p>
+      <%= link_to "Show this group session", group_session %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New group session", new_group_session_path %>

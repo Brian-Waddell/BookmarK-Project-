@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @group_session %>
+
+<div>
+  <%= link_to "Edit this group session", edit_group_session_path(@group_session) %> |
+  <%= link_to "Back to group sessions", group_sessions_path %>
+
+  <%= button_to "Destroy this group session", @group_session, method: :delete %>
+</div>
