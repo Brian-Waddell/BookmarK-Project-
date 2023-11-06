@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController 
 
-  def root 
+  def index 
+    
   end 
 end 

@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
- # skip_before_action(:force_user_sign_in, { :only => [:sign_up_form, :create, :sign_in_form, :create_cookie] })
-  #before_action :set_user, only: %i[ show edit update destroy ]
+  #skip_before_action(:force_user_sign_in, { :only => [:sign_up_form, :create, :sign_in_form, :create_cookie] })
+  before_action :set_user, only: %i[ show edit update destroy ]
 
   # GET /users or /users.json
   def index
