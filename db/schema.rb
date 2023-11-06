@@ -10,7 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_06_153239) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_06_155736) do
+  create_table "comments", force: :cascade do |t|
+    t.string "body"
+    t.string "likes"
+    t.integer "dislikes"
+    t.integer "question_id"
+    t.integer "participant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "group_sessions", force: :cascade do |t|
+    t.integer "owner_id"
+    t.integer "book_id"
+    t.string "name_of_group"
+    t.string "list_of_members"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
