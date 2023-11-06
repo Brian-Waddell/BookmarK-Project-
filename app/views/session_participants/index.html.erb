@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Session participants</h1>
+
+<div id="session_participants">
+  <% @session_participants.each do |session_participant| %>
+    <%= render session_participant %>
+    <p>
+      <%= link_to "Show this session participant", session_participant %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New session participant", new_session_participant_path %>
