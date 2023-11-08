@@ -22,8 +22,10 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
   has_many  :group_sessions, class_name: "GroupSession", foreign_key: "owner_id", dependent: :destroy
 
   has_many  :books, class_name: "Book", foreign_key: "user_id", dependent: :destroy

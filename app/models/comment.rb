@@ -3,9 +3,9 @@
 # Table name: comments
 #
 #  id             :integer          not null, primary key
-#  body           :string
+#  body           :string           not null
 #  dislikes       :integer
-#  likes          :string
+#  likes          :integer          default(0), not null
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  participant_id :integer

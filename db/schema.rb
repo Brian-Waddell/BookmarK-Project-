@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_06_175200) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_08_221621) do
   create_table "books", force: :cascade do |t|
     t.string "title"
-    t.string "author"
+    t.string "author", null: false
     t.string "publish_date"
     t.integer "rating"
     t.integer "user_id"
@@ -24,8 +24,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_06_175200) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.string "body"
-    t.string "likes"
+    t.string "body", null: false
+    t.integer "likes", default: 0, null: false
     t.integer "dislikes"
     t.integer "question_id"
     t.integer "participant_id"
