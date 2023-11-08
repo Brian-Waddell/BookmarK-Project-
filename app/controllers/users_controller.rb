@@ -8,6 +8,10 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def dashboard 
+    
+  end 
+
   # GET /users/1 or /users/1.json
   def show
   end
