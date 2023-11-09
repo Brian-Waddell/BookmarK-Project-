@@ -8,10 +8,13 @@ unless Rails.env.production?
       "db:migrate",
       "dev:sample_data"
     ]
-
+  
     desc "Add sample data to development environment"
-    task sample_data: [:environment, "dev:add_users"] do
-      puts "sample data"
+    task sample_data:
+     [:environment, 
+      "dev:add_users",
+      "dev:add_books"] do
+      puts " done adding sample data"
     end
 
     task add_users: :environment do
@@ -27,5 +30,18 @@ unless Rails.env.production?
       end
       puts "done"
     end
-  end
+
+    task :add_books => [:environment] do |t| 
+      puts "adding books"
+     
+      num_books = rand(20..50)
+      num_books.times do |i|
+        b = Book.create(
+          user: User.all.sample, 
+          author: Faker::Book.author,
+          title: Faker::Book.title
+        )
+      end 
+    end 
+  end 
 end
