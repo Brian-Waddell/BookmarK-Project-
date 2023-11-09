@@ -3,7 +3,7 @@
 # Table name: questions
 #
 #  id             :integer          not null, primary key
-#  title          :string
+#  body           :string           not null
 #  topic          :string
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
@@ -11,8 +11,6 @@
 #  participant_id :integer
 #
 class Question < ApplicationRecord
-  belongs_to :comment, required: true, class_name: "Comment", foreign_key: "comment_id"
-
+  has_many :comments, class_name: "Comment", foreign_key: "question_id"
   belongs_to :participant, required: true, class_name: "SessionParticipant", foreign_key: "participant_id" 
-
 end

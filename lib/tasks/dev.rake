@@ -42,6 +42,21 @@ unless Rails.env.production?
           title: Faker::Book.title
         )
       end 
+      puts "Done adding books "
     end 
-  end 
+
+    task add_questions: :environment do 
+      puts "adding questions"
+
+      topic_questions = rand(20..50)
+      topic_questions.times do |q| 
+        q = Question.create(
+          participant_id: User.all.sample.id,
+          topic: Faker::Lorem.question, 
+          body: Faker::Books::Dune.quote
+        )
+      end 
+      puts "Finish with Questions"
+    end
+  end
 end

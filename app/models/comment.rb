@@ -12,9 +12,6 @@
 #  question_id    :integer
 #
 class Comment < ApplicationRecord
-  
-  has_many  :questions, class_name: "Question", foreign_key: "comment_id", dependent: :destroy
-
+  belongs_to :question, class_name: "Question", foreign_key: "question_id", dependent: :destroy
   belongs_to :participant, required: true, class_name: "SessionParticipant", foreign_key: "participant_id" 
-
 end
