@@ -1,3 +1,31 @@
-desc "Fill the database tables with some sample data"
-task({ :sample_data => :environment }) do
+unless Rails.env.production?
+  namespace :dev do
+    desc "Migrate, create, drop, and add sample data to the database"
+    task reset: [
+      :environment,
+      "db:drop",
+      "db:create",
+      "db:migrate",
+      "dev:sample_data"
+    ]
+
+    desc "Add sample data to development environment"
+    task sample_data: [:environment, "dev:add_users"] do
+      puts "sample data"
+    end
+
+    task add_users: :environment do
+      puts "adding users"
+      names = ["brian", "alice", "aldo", "sam", "alex"]
+      names.each do |name|
+        u = User.create(
+          email: "#{name}@example.com",
+          username: name,
+          password: "Password1"
+        )
+        puts "added #{u.email}"
+      end
+      puts "done"
+    end
+  end
 end
